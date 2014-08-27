@@ -10,6 +10,16 @@ class tinc::config {
   $connect_to   = $tinc::connect_to
   $package_name = $tinc::package_name
 
+  if $::osfamily == 'Debian' {
+    file { '/etc/tinc/nets.boot':
+      ensure => file,
+      content=> "${network_name}/n",
+      group  => root,
+      owner  => root,
+      mode   => '0644',
+    }
+  }
+
   file {"/etc/tinc/${network_name}":
     ensure  => directory,
     group   => root,
