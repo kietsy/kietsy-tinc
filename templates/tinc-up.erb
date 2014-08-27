@@ -10,5 +10,5 @@
 # as defined in the host configuration file!
 
 ip link set $INTERFACE up
-ip addr add 10.0.0.<%= @nodenumber %>/32 dev $INTERFACE
-ip route add 10.0.0.0/24 dev $INTERFACE
+ip addr add <%= @ip_address %>/32 dev $INTERFACE
+ip route add <%= @ip_address.split('.')[0..2].join('.') %>.0/24 dev $INTERFACE
