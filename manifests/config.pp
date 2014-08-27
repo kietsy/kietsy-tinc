@@ -8,6 +8,7 @@ class tinc::config {
   $hosts_dir    = $tinc::hosts_dir
   $service_name = $tinc::service_name
   $connect_to   = $tinc::connect_to
+  $package_name = $tinc::package_name
 
   file { "/etc/tinc/${network_name}/hosts":
     ensure  => directory,
@@ -16,7 +17,7 @@ class tinc::config {
     owner   => root,
     recurse => true,
     notify  => Service[$service_name],
-    require => Package['tinc'],
+    require => Package[$package_name],
   }
 
   file { "/etc/tinc/${network_name}/tinc-up":
