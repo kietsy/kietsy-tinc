@@ -7,6 +7,7 @@ class tinc::config {
   $port         = $tinc::port
   $ip_address   = $tinc::ip_address
   $hosts_dir    = $tinc::hosts_dir
+  $service_name = $tinc::service_name
 
   file { "/etc/tinc/${network_name}/hosts":
     ensure  => directory,
@@ -14,7 +15,7 @@ class tinc::config {
     group   => root,
     owner   => root,
     recurse => true,
-    notify  => Service['tincd@home'],
+    notify  => Service[$service_name],
     require => Package['tinc'],
   }
 
@@ -24,7 +25,7 @@ class tinc::config {
     mode    => '0755',
     group   => root,
     owner   => root,
-    notify  => Service['tincd@home'],
+    notify  => Service[$service_name],
   }
 
   file { "/etc/tinc/${network_name}/tinc-down":
@@ -33,7 +34,7 @@ class tinc::config {
     mode    => '0755',
     group   => root,
     owner   => root,
-    notify  => Service['tincd@home'],
+    notify  => Service[$service_name],
   }
 
   file { "/etc/tinc/${network_name}/tinc.conf":
@@ -42,6 +43,6 @@ class tinc::config {
     mode    => '0755',
     group   => root,
     owner   => root,
-    notify  => Service['tincd@home'],
+    notify  => Service[$service_name],
   }
 }
