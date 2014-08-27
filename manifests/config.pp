@@ -10,6 +10,13 @@ class tinc::config {
   $connect_to   = $tinc::connect_to
   $package_name = $tinc::package_name
 
+  file {"/etc/tinc/${network_name}":
+    ensure  => directory,
+    group   => root,
+    owner   => root,
+    require => Package[$package_name]
+  }
+
   file { "/etc/tinc/${network_name}/hosts":
     ensure  => directory,
     source  => $hosts_dir,
