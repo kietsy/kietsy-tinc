@@ -10,6 +10,7 @@
 class tinc (
   $ip_address,
   $network_name = $tinc::params::network_name,
+  $connect_to   = $tinc::params::connect_to,
   $package_name = $tinc::params::package_name,
   $hosts_dir    = $tinc::params::hosts_dir,
 ) inherits tinc::params {

@@ -4,8 +4,9 @@
 # It sets variables according to platform
 #
 class tinc::params {
-  $hosts_dir = 'puppet:///modules/tinc/sample-config/home',
-  $network_name = 'sample',
+  $hosts_dir    = 'puppet:///modules/tinc/sample-config/hosts'
+  $network_name = 'sample'
+  $connect_to   = ['alpha', 'beta']
 
   case $::osfamily {
     'Debian': {

@@ -13,8 +13,8 @@ Name = <%= @hostname %>
 # Comment these out to make yourself a listen-only connection
 # You must use the name of another tinc host.
 # May be used multiple times for redundance.
-ConnectTo = serenity
-ConnectTo = firefly
+<% @connect_to.each do |host| %>ConnectTo = <%= host %>
+<% end %>
 
 # The tap device tinc will use.
 # Default is /dev/tap0 for ethertap or FreeBSD,

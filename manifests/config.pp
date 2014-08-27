@@ -7,6 +7,7 @@ class tinc::config {
   $ip_address   = $tinc::ip_address
   $hosts_dir    = $tinc::hosts_dir
   $service_name = $tinc::service_name
+  $connect_to   = $tinc::connect_to
 
   file { "/etc/tinc/${network_name}/hosts":
     ensure  => directory,
