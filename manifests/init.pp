@@ -12,7 +12,6 @@ class tinc (
   $network_name = $tinc::params::network_name,
   $package_name = $tinc::params::package_name,
   $hosts_dir    = $tinc::params::hosts_dir,
-  $port         = $tinc::params::port,
 ) inherits tinc::params {
 
   if $::osfamily == 'Archlinux' {
@@ -20,7 +19,7 @@ class tinc (
   }
 
   # validate parameters here
-  validate_string($package_name, $ip_adress, $port)
+  validate_string($package_name, $ip_address)
 
   class { 'tinc::install': } ->
   class { 'tinc::config': } ~>

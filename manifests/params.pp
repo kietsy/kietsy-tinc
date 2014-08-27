@@ -5,7 +5,6 @@
 #
 class tinc::params {
   $hosts_dir = 'puppet:///modules/tinc/sample-config/home',
-  $port      = '655',
   $network_name = 'sample',
 
   case $::osfamily {

@@ -4,7 +4,6 @@
 #
 class tinc::config {
   $network_name = $tinc::network_name
-  $port         = $tinc::port
   $ip_address   = $tinc::ip_address
   $hosts_dir    = $tinc::hosts_dir
   $service_name = $tinc::service_name
