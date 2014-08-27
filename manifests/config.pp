@@ -13,7 +13,7 @@ class tinc::config {
   if $::osfamily == 'Debian' {
     file { '/etc/tinc/nets.boot':
       ensure => file,
-      content=> "${network_name}/n",
+      content=> "${network_name}\n",
       group  => root,
       owner  => root,
       mode   => '0644',
