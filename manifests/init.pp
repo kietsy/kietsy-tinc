@@ -8,7 +8,7 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class tinc (
-  $ip_adress,
+  $ip_address,
   $network_name = $tinc::params::network_name,
   $package_name = $tinc::params::package_name,
   $hosts_dir    = $tinc::params::hosts_dir,
