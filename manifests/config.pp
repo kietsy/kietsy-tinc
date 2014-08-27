@@ -38,8 +38,8 @@ class tinc::config {
 
   file { "/etc/tinc/${network_name}/tinc.conf":
     ensure  => file,
-    content => template('tinc/tinc-up.erb'),
-    mode    => '0755',
+    content => template('tinc/tinc.conf.erb'),
+    mode    => '0655',
     group   => root,
     owner   => root,
     notify  => Service[$service_name],
