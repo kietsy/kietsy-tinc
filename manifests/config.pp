@@ -15,6 +15,7 @@ class tinc::config {
     source  => $hosts_dir,
     group   => root,
     owner   => root,
+    mode    => '0600',
     recurse => true,
     notify  => Service[$service_name],
     require => Package[$package_name],
