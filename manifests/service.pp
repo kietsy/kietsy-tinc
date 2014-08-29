@@ -5,10 +5,26 @@
 #
 class tinc::service {
 
-  service { $tinc::service_name:
-    ensure     => running,
-    enable     => true,
-    hasstatus  => true,
-    hasrestart => true,
+  case $::osfamily {
+    'Debian': {
+      service { $tinc::service_name:
+        ensure     => running,
+        enable     => true,
+        hasstatus  => false,
+        hasrestart => true,
+      }
+    }
+    'Archlinux': {
+      service { $tinc::service_name:
+        ensure     => running,
+        enable     => true,
+        hasstatus  => true,
+        hasrestart => true,
+      }
+    }
+    default: {
+      fail("${::operatingsystem} not supported. Pull Requests welcome.")
+    }
   }
+
 }
