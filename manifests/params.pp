@@ -14,6 +14,7 @@ class tinc::params {
       $service_name = 'tinc'
     }
     'RedHat', 'Amazon': {
+      notice("Package has not been tested ${::operatingsystem}. Open tickets if it misbehaves.")
       $package_name = 'tinc'
       $service_name = 'tinc'
     }
@@ -22,7 +23,7 @@ class tinc::params {
       $service_name = 'tincd'
     }
     default: {
-      fail("${::operatingsystem} not supported")
+      fail("${::operatingsystem} not supported. Pull Requests welcome.")
     }
   }
 }
