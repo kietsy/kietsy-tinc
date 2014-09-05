@@ -7,13 +7,13 @@
 # Variable names are treated case insensitive.
 
 # The name of this tinc host. Required.
-Name = <%= @hostname %>
+Name = <%= @hostname.gsub(/[^a-z^A-Z^0-9^_]/, '_') %>
 
 # The internet host to connect with.
 # Comment these out to make yourself a listen-only connection
 # You must use the name of another tinc host.
 # May be used multiple times for redundance.
-<% @connect_to.each do |host| %>ConnectTo = <%= host %>
+<% @connect_to.each do |host| %>ConnectTo = <%= host.gsub(/[^a-z^A-Z^0-9^_]/, '_') %>
 <% end %>
 
 # The tap device tinc will use.
