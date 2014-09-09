@@ -2,23 +2,44 @@ require 'spec_helper'
 
 describe 'tinc' do
   context 'supported operating systems' do
-    ['Debian', 'RedHat'].each do |osfamily|
-      describe "tinc class without any parameters on #{osfamily}" do
-        let(:params) {{ }}
-        let(:facts) {{
-          :osfamily => osfamily,
-        }}
+    describe "tinc class without any parameters on Debian" do
+      let(:params) {{
+        :ip_address => '10.0.0.1',
+      }}
+      let(:facts) {{
+        :osfamily => 'Debian',
+        :hostname => 'firefly',
+      }}
 
-        it { should compile.with_all_deps }
+      it { should compile.with_all_deps }
 
-        it { should contain_class('tinc::params') }
-        it { should contain_class('tinc::install').that_comes_before('tinc::config') }
-        it { should contain_class('tinc::config') }
-        it { should contain_class('tinc::service').that_subscribes_to('tinc::config') }
+      it { should contain_class('tinc::params') }
+      it { should contain_class('tinc::install').that_comes_before('tinc::config') }
+      it { should contain_class('tinc::config') }
+      it { should contain_class('tinc::service').that_subscribes_to('tinc::config') }
 
-        it { should contain_service('tinc') }
-        it { should contain_package('tinc').with_ensure('present') }
-      end
+      it { should contain_service('tinc') }
+      it { should contain_package('tinc').with_ensure('present') }
+    end
+
+    describe "tinc class without any parameters on Archlinux" do
+      let(:params) {{
+        :ip_address => '10.0.0.1',
+      }}
+      let(:facts) {{
+        :osfamily => 'Archlinux',
+        :hostname => 'firefly',
+      }}
+
+      it { should compile.with_all_deps }
+
+      it { should contain_class('tinc::params') }
+      it { should contain_class('tinc::install').that_comes_before('tinc::config') }
+      it { should contain_class('tinc::config') }
+      it { should contain_class('tinc::service').that_subscribes_to('tinc::config') }
+
+      it { should contain_service('tincd@sample') }
+      it { should contain_package('tinc').with_ensure('present') }
     end
   end
 
